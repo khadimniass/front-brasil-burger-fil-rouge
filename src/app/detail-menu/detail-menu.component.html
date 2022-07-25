@@ -1,0 +1,22 @@
+<div class="d-flex justify-content-center mt-5 item-show">
+<div class="item-burger">
+  <div class="div-image">
+    <img src="{{ menu.urlImage  }}" alt="{{ menu.description }}">
+  </div>
+  <div class="show mb-0">
+    <p class="card-tittle fs-1 text-center">{{ menu.price }} FCFA </p>
+    <p class="h6 text-center">{{menu.description}}</p>
+    <div class="star mb-2">
+      <i class="bi-star"></i>
+      <i class="bi-star"></i>
+      <i class="bi-star"></i>
+      <i class="bi-star-fill"></i>
+      <i class="bi-star-fill"></i>
+    </div>
+    <button class="btn-commander btn btn-secondary" routerLink="">Commander</button>
+  </div>
+</div>
+  <div>
+    <h1>details menu du menu {{ menu.id }} </h1>
+  </div>
+</div>

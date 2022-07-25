@@ -1,0 +1,21 @@
+<div class="d-flex justify-content-center mt-5 item-show">
+  <div class="item-burger">
+    <div class="div-image">
+      <!--  <img src="https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg" alt=""> -->
+      <!-- <img src="https://www.themealdb.com/images/media/meals/1529445434.jpg" alt=""> -->
+      <img src="{{ burger.urlImage  }}" alt="{{ burger.description }}">
+    </div>
+    <div class="show mb-0">
+      <p class="card-tittle fs-1 text-center">{{ burger.price }} FCFA </p>
+      <p class="h6 text-center">{{burger.description}}</p>
+      <div class="star mb-2">
+        <i class="bi-star"></i>
+        <i class="bi-star"></i>
+        <i class="bi-star"></i>
+        <i class="bi-star-fill"></i>
+        <i class="bi-star-fill"></i>
+      </div>
+      <button class="btn-commander btn btn-secondary" routerLink="">Commander</button>
+    </div>
+  </div>
+</div>

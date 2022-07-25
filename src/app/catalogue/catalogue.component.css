@@ -1,0 +1,17 @@
+.produit{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  overflow-y: auto;
+}
+/* scroll */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb{
+  border-radius: 10px;
+  background: linear-gradient(black, transparent, black);
+}
+
+/* scroll */
