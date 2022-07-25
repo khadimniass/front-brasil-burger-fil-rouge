@@ -10,6 +10,7 @@
 }
 .item-burger{
   border: .1rem solid rebeccapurple;
+  position: relative;
 }
 .show{
   border: .1rem solid;
@@ -20,4 +21,14 @@
 .star{
   display: flex;
   justify-content: space-around;
+}
+.item-item-burger{
+  position: relative;
+}
+.btn-panier{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  color: #fff;
 }

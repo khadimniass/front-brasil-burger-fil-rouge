@@ -12,7 +12,6 @@ export class MenusComponent implements OnInit {
   constructor(private router:Router) { }
 
   ngOnInit(): void {
-
   }
   details(){
     this.router.navigateByUrl(`menu/${this.menusCatalogue.id}`);
