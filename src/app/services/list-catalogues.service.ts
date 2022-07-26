@@ -1,10 +1,29 @@
 import { Injectable } from '@angular/core';
 import {Catalogue, Produit} from "../models/produit";
+import {from, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ListCataloguesService {
+  private menuObs:Observable<Produit>=from(
+    [
+      {
+        id:1,
+        nom:"burger 1",
+        description:"une description 1",
+        urlImage:"https://www.themealdb.com/images/media/meals/k420tj1585565244.jpg",
+        price:2000
+      },
+      {
+        id:2,
+        nom:"burger 2",
+        description:"une description 2",
+        urlImage:"https://www.themealdb.com/images/media/meals/1529442316.jpg",
+        price:4500
+      },
+    ]
+  )
 
 private catalogue:Catalogue={
     menus:[
@@ -132,18 +151,27 @@ private catalogue:Catalogue={
     ]
   };
 
+private cataloguObs:Observable<Catalogue>=from([this.catalogue]);
+/*
+  getMenuFromCat0bs():Observable<Produit>{
+    return this.cataloguObs.menu.menus
+  }
+*/
+  getMenuObs():Observable<Produit>{
+    return this.menuObs;
+   // return this.getMenuObs();
+  }
+
   getMenu(): Produit[]{
     return this.catalogue.menus;
   }
   getBurger():Produit[]{
     return this.catalogue.burgers;
   }
-  getProdById(idProduit:number):Produit{
+  getProdById(idProduit:number):any{
   const produit = this.catalogue.menus.find(produi=>produi.id===idProduit);
     if (produit){
       return produit;
-    }else {
-      throw new Error("product not found");
     }
   }
   getBurgeryId(idProduit:number):Produit{

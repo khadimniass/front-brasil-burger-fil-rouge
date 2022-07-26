@@ -15,6 +15,6 @@ export class BurgersComponent implements OnInit {
   ngOnInit(): void {
   }
   details(){
-    this.router.navigateByUrl(`burger/${this.burgerCatalogue.id}`);
+    this.router.navigateByUrl(`catalogue/burger/${this.burgerCatalogue.id}`);
   }
 }

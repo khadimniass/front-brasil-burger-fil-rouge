@@ -12,6 +12,7 @@ import { MenusComponent } from './menus/menus.component';
 import { DetailMenuComponent } from './detail-menu/detail-menu.component';
 import { DetailBurgerComponent } from './detail-burger/detail-burger.component';
 import { FooterComponent } from './footer/footer.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { FooterComponent } from './footer/footer.component';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,14 +11,9 @@ import {ActivatedRoute} from "@angular/router";
 export class DetailBurgerComponent implements OnInit {
   burger!:Produit;
   constructor(private serviceCat:ListCataloguesService,private router:ActivatedRoute) { }
-  /*
-    const prodId = + this.router.snapshot.params['id'];
-    this.menu = this.serviceCat.getProdById(prodId);
-   */
 
   ngOnInit(): void {
     const burgerId = +this.router.snapshot.params['id'];
     this.burger=this.serviceCat.getBurgeryId(burgerId);
   }
-
 }

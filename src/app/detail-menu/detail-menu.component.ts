@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Produit} from "../models/produit";
 import {ListCataloguesService} from "../services/list-catalogues.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-detail-menu',
@@ -10,10 +10,13 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class DetailMenuComponent implements OnInit {
   menu!:Produit;
-  constructor(private serviceCat:ListCataloguesService,private router:ActivatedRoute) { }
+  constructor(private serviceCat:ListCataloguesService,private router:ActivatedRoute, private route:Router) { }
 
   ngOnInit(): void {
     const prodId = + this.router.snapshot.params['id'];
     this.menu = this.serviceCat.getProdById(prodId);
+    if (this.menu===undefined){
+      this.route.navigateByUrl('');
+    }
   }
 }
