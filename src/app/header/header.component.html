@@ -16,8 +16,13 @@
         <div class="navbar-nav ms-auto">
 
           <div>
-          <i class="bi-person m-1"></i>
-          <i class="bi-cart m-1"></i>
+            <span>
+             <a href="/panier" class="btn btn-dark ">
+                <i class="bi-cart-check m-1 fs-2"></i>
+                  {{ (item$ | async)?.length }}
+             </a>
+            </span>
+              <i class="bi-person m-1 fs-1 fs-2"></i>
           </div>
         </div>
       </div>

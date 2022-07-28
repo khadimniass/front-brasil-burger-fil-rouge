@@ -1,10 +1,10 @@
-<div class="container card mt-5">
+<div class="card mt-5">
   <p class="h4 text-center">list des burgers</p>
   <div class="produit">
-    <app-burgers *ngFor="let burger of burgers" [burgerCatalogue]="burger"  class="mx-3"></app-burgers>
+    <app-burgers *ngFor="let burger of burgers" [produit]="burger" class="mx-3"></app-burgers>
   </div>
   <p class="h4 text-center">list des menus</p>
   <div class="produit">
-    <app-menus *ngFor="let menu of menus " [menusCatalogue] = "menu" class="mx-3"></app-menus>
+    <app-burgers *ngFor="let menu of menus" [produit]="menu" class="mx-3"></app-burgers>
   </div>
 </div>

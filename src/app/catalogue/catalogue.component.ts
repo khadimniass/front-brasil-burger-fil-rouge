@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Produit} from "../models/produit";
+import {Produit, ProduitDb} from "../models/models.type.variable";
 import {ListCataloguesService} from "../services/list-catalogues.service";
-import {BackService} from "../services/back.service";
+import {BackService} from "../services/back.bd.service";
+import {ServicePanierService} from "../services/service-panier.service";
 
 @Component({
   selector: 'app-catalogue',
@@ -11,13 +12,16 @@ import {BackService} from "../services/back.service";
 export class CatalogueComponent implements OnInit {
   menus !:Produit[];
   burgers !:Produit[];
-  constructor(private serviceCatalogue:ListCataloguesService, private serviceBack:BackService) { }
 
+  constructor(private serviceCatalogue:ListCataloguesService, private serviceBack:BackService) { }
   ngOnInit(): void {
-    this.burgers=this.serviceCatalogue.getBurger();
-    this.menus=this.serviceCatalogue.getMenu();
-    this.serviceBack.getCatalogueObs().subscribe(data => {
-      console.log(data);
+    //this.burgers=this.serviceCatalogue.getBurger();
+    //this.menus=this.serviceCatalogue.getMenu();
+
+    this.serviceBack.getCatalogueObs().subscribe(catalogue => {
+      this.burgers=catalogue.burgers
+      this.menus=catalogue.menus
     });
   }
 }
+//faire une seule

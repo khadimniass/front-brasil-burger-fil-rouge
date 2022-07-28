@@ -1,0 +1,23 @@
+<div class="item-item-burger">
+<div class="contain-item-menu" (click)="details()">
+  <div class="item-burger">
+    <div class="div-image">
+      <img [src]="affichageImage(produit.image)" alt="{{ produit.description }}">
+    </div>
+    <div class="show mb-0">
+      <p class="card-tittle">{{ produit.prix }} FCFA</p>
+      <div class="star mb-2">
+        <i class="bi-star"></i>
+        <i class="bi-star"></i>
+        <i class="bi-star"></i>
+        <i class="bi-star-fill"></i>
+        <i class="bi-star-fill"></i>
+      </div>
+    </div>
+  </div>
+</div>
+  <button class="btn btn-dark btn-panier" (click)="ajouterAuPagner(produit)" >
+    ajouter au panier
+    <i class="bi-cart-check m-1"></i>
+  </button>
+</div>

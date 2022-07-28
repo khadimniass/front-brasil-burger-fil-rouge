@@ -7,12 +7,11 @@ import { MainComponent } from './main/main.component';
 import { HeaderComponent } from './header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CatalogueComponent } from './catalogue/catalogue.component';
-import { BurgersComponent } from './burgers/burgers.component';
-import { MenusComponent } from './menus/menus.component';
-import { DetailMenuComponent } from './detail-menu/detail-menu.component';
-import { DetailBurgerComponent } from './detail-burger/detail-burger.component';
+import { ProduitComponent } from './catalogue/produit/produit.component';
+import { DetailProduitComponent } from './catalogue/detail-produit/detail-produit.component';
 import { FooterComponent } from './footer/footer.component';
 import {HttpClientModule} from "@angular/common/http";
+import { PanierComponent } from './panier/panier.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +19,10 @@ import {HttpClientModule} from "@angular/common/http";
     MainComponent,
     HeaderComponent,
     CatalogueComponent,
-    BurgersComponent,
-    MenusComponent,
-    DetailMenuComponent,
-    DetailBurgerComponent,
+    ProduitComponent,
+    DetailProduitComponent,
     FooterComponent,
+    PanierComponent,
   ],
   imports: [
     BrowserModule,

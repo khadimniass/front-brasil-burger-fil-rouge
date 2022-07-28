@@ -31,4 +31,8 @@
   right: 0;
   left: 0;
   color: #fff;
+  visibility: hidden;
+}
+.item-item-burger:hover .btn-panier{
+  visibility: visible;
 }
