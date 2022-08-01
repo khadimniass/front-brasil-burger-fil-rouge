@@ -23,3 +23,8 @@ export class CatalogueBd{
   menus!:ProduitDb[];
   burgers!:ProduitDb[];
 }
+
+export class Compliment{
+  frites!:Produit[];
+  boissons!:Produit[];
+}

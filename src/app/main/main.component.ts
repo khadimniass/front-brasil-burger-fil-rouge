@@ -6,6 +6,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
+
 export class MainComponent implements OnInit {
 
   constructor(private modalService: NgbModal) { }

@@ -4,7 +4,7 @@
     <div class="div-image">
       <img [src]="affichageImage(produit.image)" alt="{{ produit.description }}">
     </div>
-    <div class="show mb-0">
+    <div class="">
       <p class="card-tittle">{{ produit.prix }} FCFA</p>
       <div class="star mb-2">
         <i class="bi-star"></i>
@@ -16,7 +16,7 @@
     </div>
   </div>
 </div>
-  <button class="btn btn-dark btn-panier" (click)="ajouterAuPagner(produit)" >
+  <button class = "btn btn-dark btn-panier {{ show }} fs-3" (click)="ajouterAuPagner(produit)" >
     ajouter au panier
     <i class="bi-cart-check m-1"></i>
   </button>

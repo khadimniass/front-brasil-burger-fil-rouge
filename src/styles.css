@@ -9,3 +9,47 @@
   background: linear-gradient(black, #bfbebe, black);
 }
 /* scroll */
+/*
+@cette classe permet l'affichages des produit au niveau de catalogue et compliment
+ */
+.produit{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  overflow-y: auto;
+}
+.detail-menu{
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-commander{
+  width: 100%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: 50px;
+}
+
+.div-image{
+  width: 350px;
+  height: 350px;
+}
+.div-image img{
+  height: 100%;
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.show{
+  border: .1rem solid;
+  width: 400px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.star{
+  display: flex;
+  justify-content: space-around;
+}
+.item-item-burger{
+  border:solid;
+}

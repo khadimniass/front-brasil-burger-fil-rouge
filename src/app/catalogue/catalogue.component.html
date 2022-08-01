@@ -1,10 +1,11 @@
 <div class="card mt-5">
   <p class="h4 text-center">list des burgers</p>
   <div class="produit">
-    <app-burgers *ngFor="let burger of burgers" [produit]="burger" class="mx-3"></app-burgers>
+    <app-produit *ngFor="let burger of burgers" [produit]="burger" class="mx-3"></app-produit>
   </div>
+
   <p class="h4 text-center">list des menus</p>
   <div class="produit">
-    <app-burgers *ngFor="let menu of menus" [produit]="menu" class="mx-3"></app-burgers>
+    <app-menu *ngFor="let menu of menus" [menus]="menu" class="mx-3" ></app-menu>
   </div>
 </div>

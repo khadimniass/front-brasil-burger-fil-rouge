@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Produit} from "../../models/models.type.variable";
-import {ListCataloguesService} from "../../services/list-catalogues.service";
+import {Produit} from "../../../models/models.type.variable";
+import {ListCataloguesService} from "../../../services/list-catalogues.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {ServiceService} from "../../services/service.service";
+import {ServiceService} from "../../../services/service.service";
 import {DomSanitizer} from "@angular/platform-browser";
-import {BackService} from "../../services/back.bd.service";
+import {BackService} from "../../../services/back.bd.service";
 
 @Component({
   selector: 'app-detail-burger',
@@ -23,15 +23,10 @@ export class DetailProduitComponent implements OnInit {
   ngOnInit(): void {
     const idProduit = +this.activeRoute.snapshot.params['id'];
     //this.produit=this.serviceCat.getBurgeryId(idProduit); // donne du tableau
-    this.servicebd.getProduitId(idProduit).subscribe( // donnes bd
-      data=>{
+        this.servicebd.getProduitId(idProduit).subscribe( data=>{
         this.produit=data;
-        console.log(this.produit);
       }
     );
-   /* if (this.produit){
-      this.router.navigateByUrl('');
-    }*/
   }
   afficherImage(img:string){
     return this.service.demanderAffichageImage(img);

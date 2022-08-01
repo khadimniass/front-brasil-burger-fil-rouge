@@ -6,22 +6,23 @@ import {DomSanitizer} from "@angular/platform-browser";
 import {ServiceService} from "../../services/service.service";
 
 @Component({
-  selector: 'app-burgers',
+  selector: 'app-produit',
   templateUrl: './produit.component.html',
   styleUrls: ['./produit.component.css']
 })
 export class ProduitComponent implements OnInit {
   @Input() produit!:Produit;
-  private static panier: Produit[]=[];
+
+  @Input() show:string="";
 
   constructor(private router:Router,
               private servicePanier:ServicePanierService,
               private sanitizer:DomSanitizer,
-              private service:ServiceService
-  ) { }
+              private service:ServiceService,
+  ){}
 
   ngOnInit(): void {
-    //console.log("length : ",localStorage.getItem("panier"))
+
   }
   details(){
     this.router.navigateByUrl(`catalogue/produits/${this.produit.id}`);
