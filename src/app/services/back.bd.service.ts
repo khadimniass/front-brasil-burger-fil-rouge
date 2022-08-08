@@ -1,24 +1,26 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Compliment} from "../models/models.type.variable";
+import {Compliment, Produit} from "../models/models.type.variable";
+import Swal from "sweetalert2";
 
 @Injectable({
   providedIn: 'root'
 })
 export class BackService {
   private readonly urlCatlogue:string ="http://127.0.0.1:8000/api/catalogues";
-  private readonly urlMenus:string = "http://127.0.0.1:8000/api/menus";
-  private readonly urlBurgers:string = "http://127.0.0.1:8000/api/burgers";
   private readonly urlProduit:string = "http://127.0.0.1:8000/api/produits";
   private readonly urlComplement:string = "http://127.0.0.1:8000/api/complements";
   private readonly urlZone:string = "http://127.0.0.1:8000/api/zones";
+  private readonly urlCommandes:string = "http://127.0.0.1:8000/api/commandes";
+  private readonly urlBoissonInMenu:string = "http://127.0.0.1:8000/api/menu_boissons/";
+  private readonly urlUsers:string = "http://127.0.0.1:8000/api/users";
 
   constructor(private http:HttpClient) { }
   getCatalogueObs():Observable<any>{
     return this.http.get<any>(this.urlCatlogue);
   }
-  getProduitId(idProduit:number):Observable<any>{
+  getProduitById(idProduit:number):Observable<any>{
     return this.http.get<any>(this.urlProduit+"/"+idProduit);
   }
   getComplement():Observable<Compliment>{
@@ -26,5 +28,34 @@ export class BackService {
   }
   getZone():Observable<any>{
     return this.http.get<any>(this.urlZone);
+  }
+  getBoissonInMenu(id:number){
+    return this.http.get<any>(this.urlBoissonInMenu+id);
+  }
+  setCommande(body:any,idZone:number){
+    this.http.post<any>(this.urlCommandes, {body,"zone": "api/zones/"+idZone}).subscribe();
+  }
+  getCommande(){
+    return  this.http.get<any>(this.urlCommandes);
+  }
+  updateCommande(id:number, body:any,message:string){
+    this.http.put(this.urlCommandes+"/"+id, body).subscribe();
+    Swal.fire({
+      html: message,
+      icon:'info',
+      timer:3500,
+      footer:'copyright@',
+      title:'brasil burger'
+    });
+    setTimeout(
+        location.reload
+        ,3000)
+    setTimeout( location.reload ,3000)
+  }
+  getCommandeById(id:number):Observable<any>{
+    return this.http.get<any>(this.urlCommandes+"/"+id)
+  }
+  getCommandeUser(idUser:number){
+    return this.http.get<any>(this.urlUsers+"/"+idUser);
   }
 }

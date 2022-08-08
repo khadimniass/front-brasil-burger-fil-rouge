@@ -1,11 +1,21 @@
 <div class="card mt-5">
+  <div class="search-hero">
+    <input
+      class="form-control h-30"
+      type="search"
+      name="search"
+      [(ngModel)]="searchText"
+      autocomplete="off"
+      placeholder="Trouver votre menu ou burger par recherche"
+    />
+  </div>
   <p class="h4 text-center">list des burgers</p>
   <div class="produit">
-    <app-produit *ngFor="let burger of burgers" [produit]="burger" class="mx-3"></app-produit>
+    <app-produit *ngFor="let burger of burgers | filter: searchText" [produit]="burger" class="mx-3"></app-produit>
   </div>
 
   <p class="h4 text-center">list des menus</p>
   <div class="produit">
-    <app-menu *ngFor="let menu of menus" [menus]="menu" class="mx-3" ></app-menu>
+    <app-menu *ngFor="let menu of menus | filter: searchText" [menus]="menu" class="mx-3" ></app-menu>
   </div>
 </div>

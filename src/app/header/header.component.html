@@ -6,14 +6,13 @@
       </button>
       <div class="collapse navbar-collapse ms-auto" id="navbarCollapse">
         <div class="navbar-nav">
-          <a href="#" class="nav-item nav-link active">Home</a>
-          <a href="#" class="nav-item nav-link">Profile</a>
-          <a href="#" class="nav-item nav-link">Messages</a>
+          <a href="/" class="nav-item nav-link active">Home</a>
+          <a href="commande" class="nav-item nav-link active">Mes commandes</a>
+          <a href="admin" class="nav-item nav-link active">ADMIN</a>
           <a href="#" class="nav-item nav-link disabled" tabindex="-1">Reports</a>
         </div>
 
         <div class="navbar-nav ms-auto">
-
           <div>
             <span>
              <a href="/panier" class="btn btn-dark ">
@@ -21,7 +20,11 @@
                   {{ (item$ | async)?.length }}
              </a>
             </span>
-              <i class="bi-person m-1 fs-1 fs-2"></i>
+            <span>
+              <a href="/" class="btn btn-dark">
+                <i class="bi-person m-1 fs-1 fs-2"></i>
+              </a>
+            </span>
           </div>
         </div>
       </div>

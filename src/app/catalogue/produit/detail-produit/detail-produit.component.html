@@ -1,13 +1,19 @@
 <div class="d-flex justify-content-center mt-5 item-show">
   <div class="item-burger">
+    <div class="burger">
     <div class="div-image">
-    <!--  <img [src]=" (produit.image) " alt="{{ produit.description }}"> -->
       <img [src]=" afficherImage((produit.image)) " alt="{{ produit.description }}">
     </div>
     <div class="show mb-0">
       <p class="card-tittle fs-1 text-center">{{ produit.prix }} FCFA </p>
       <p class="h6 text-center">{{produit.description}}</p>
-      <button class="btn-commander btn btn-secondary" routerLink="">Commander</button>
+      <button class="btn-commander btn btn-secondary" (click)="ajouterAuPagner(produit)">Commander</button>
     </div>
+    </div>
+    <h1 class="text-center">produits simillaires</h1>
+    <div class="produit container">
+      <app-produit *ngFor="let burger of burgers" [produit]="burger" class="mx-3"></app-produit>
+    </div>
+    <app-compliment></app-compliment>
   </div>
 </div>
