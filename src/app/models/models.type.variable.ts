@@ -28,3 +28,7 @@ export class Compliment{
   frites!:Produit[];
   boissons!:Produit[];
 }
+
+export class Zone{
+
+}

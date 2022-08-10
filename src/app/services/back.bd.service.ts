@@ -33,11 +33,18 @@ export class BackService {
     return this.http.get<any>(this.urlBoissonInMenu+id);
   }
   setCommande(body:any,idZone:number){
+    console.log("body :::::::::::::::",body)
+    console.log("id zone ::::::::::::::::::",idZone)
     this.http.post<any>(this.urlCommandes, {body,"zone": "api/zones/"+idZone}).subscribe();
   }
+  setCommandeWithoutZone(body:any){
+    this.http.post<any>(this.urlCommandes, {body}).subscribe();
+  }
+
   getCommande(){
     return  this.http.get<any>(this.urlCommandes);
   }
+
   updateCommande(id:number, body:any,message:string){
     this.http.put(this.urlCommandes+"/"+id, body).subscribe();
     Swal.fire({
@@ -47,10 +54,6 @@ export class BackService {
       footer:'copyright@',
       title:'brasil burger'
     });
-    setTimeout(
-        location.reload
-        ,3000)
-    setTimeout( location.reload ,3000)
   }
   getCommandeById(id:number):Observable<any>{
     return this.http.get<any>(this.urlCommandes+"/"+id)
