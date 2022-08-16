@@ -15,6 +15,8 @@ export class BackService {
   private readonly urlCommandes:string = "http://127.0.0.1:8000/api/commandes";
   private readonly urlBoissonInMenu:string = "http://127.0.0.1:8000/api/menu_boissons/";
   private readonly urlUsers:string = "http://127.0.0.1:8000/api/users";
+  private readonly urlLivreurs:string = "http://127.0.0.1:8000/api/livreurs";
+  private readonly urlLivraison:string = "http://127.0.0.1:8000/api/livraisons";
 
   constructor(private http:HttpClient) { }
   getCatalogueObs():Observable<any>{
@@ -32,10 +34,8 @@ export class BackService {
   getBoissonInMenu(id:number){
     return this.http.get<any>(this.urlBoissonInMenu+id);
   }
-  setCommande(body:any,idZone:number){
-    console.log("body :::::::::::::::",body)
-    console.log("id zone ::::::::::::::::::",idZone)
-    this.http.post<any>(this.urlCommandes, {body,"zone": "api/zones/"+idZone}).subscribe();
+  setCommande(produit:any, idZone:number){
+    this.http.post<any>(this.urlCommandes, {body: produit,"zone": "api/zones/"+idZone}).subscribe();
   }
   setCommandeWithoutZone(body:any){
     this.http.post<any>(this.urlCommandes, {body}).subscribe();
@@ -55,10 +55,25 @@ export class BackService {
       title:'brasil burger'
     });
   }
+  updateEtatLivreur(idLivreur:number,body:any){
+    console.log(idLivreur)
+    this.http.put(this.urlLivreurs+"/"+idLivreur,body).subscribe();
+  }
   getCommandeById(id:number):Observable<any>{
     return this.http.get<any>(this.urlCommandes+"/"+id)
   }
   getCommandeUser(idUser:number){
     return this.http.get<any>(this.urlUsers+"/"+idUser);
+  }
+  getLivreur(){
+    return this.http.get<any>(this.urlLivreurs)
+  }
+setLivraison(commandes:any[], idLivreur:number){
+  this.http.post<any>(this.urlLivraison,
+    {
+      "livreur":"api/livreurs/" + idLivreur,
+      "commandes":commandes
+    }
+  ).subscribe();
   }
 }
