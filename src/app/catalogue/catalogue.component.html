@@ -10,10 +10,6 @@
     />
   </div>
 
-
-
-
-
   <p class="h4 text-center">list des burgers</p>
   <div class="produit">
     <app-produit *ngFor="let burger of burgers | filter: searchText" [produit]="burger" class="mx-3"></app-produit>
