@@ -1,0 +1,55 @@
+<div class="search-name">
+  <input class="form-control mt-3 text-center" type="text"
+         placeholder="personnaliser votre recherche"
+         name="search" [(ngModel)]="datesearch"
+         value="{{formateDateToday()}}"
+         style="font-size: 1.8rem"
+  >
+
+  <input class="form-control mt-3 text-center" type="date"
+         name="search" [(ngModel)]="datesearch"
+         autocomplete="on"
+         value="{{formateDateToday()}}"
+         style="font-size: 1.8rem"
+  >
+</div>
+<div *ngIf="formateDateToday()==datesearch" >
+  <h3 class="text-center mt-5">les commandes d'aujourd'hui</h3>
+</div>
+
+<div *ngIf="formateDateToday()!=datesearch">
+  <h3 class="text-center mt-5">les commandes du {{datesearch | date:"dd/MM/y"}}</h3>
+</div>
+<div style="height: 55vh; overflow:auto">
+  <table class="table table-hover">
+  <tbody>
+  <tr class="bg-info ">
+    <td>numero commande</td>
+    <td>Etat commade</td>
+    <td>Prix commande (FCFA) </td>
+    <td>Zone</td>
+    <td>Date de la commande</td>
+    <td>client</td>
+    <td>Action</td>
+  </tr>
+  <tr *ngFor="let commande of commandes|filter:datesearch">
+        <td> {{commande?.id}} </td>
+        <td> {{commande?.etat}} </td>
+        <td> {{commande?.zone.prixLivraison }} </td>
+        <td> {{commande?.zone.nom}} </td>
+        <td> {{commande?.addedAt |date : "dd/MM/Y"}} à {{ commande?.addedAt |date : "hh:mm" }} </td>
+        <td> {{ commande?.user?.prenom }} {{ commande?.user?.nom }} </td>
+        <td *ngIf="commande.etat=='en cours' else autre"> <!-- annuler, livre ,	terminer,	en cours,   -->
+          <a href="commande/{{ commande.id }}" class="btn btn-info mx-2">detail</a>
+          <button href="#" class="btn btn-success mx-2" (click)="validerComande(commande.id)">valider la commande</button>
+        </td>
+        <ng-template #autre>
+          <td>
+            <a href="commande/{{ commande.id }}" class="btn btn-info mx-2">detail</a>
+            <button disabled class="btn btn-outline-success mx-2" (click)="validerComande(commande.id)">valider la commande</button>
+          </td>
+        </ng-template>
+  </tr>
+  </tbody>
+</table>
+</div>

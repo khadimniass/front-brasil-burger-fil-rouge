@@ -1,0 +1,27 @@
+<table class="table tablet-landscape">
+  <tbody>
+  <tr class="bg-info ">
+    <td>numero commande</td>
+    <td>Etat commade</td>
+    <td>Prix commande (FCFA) </td>
+    <td>Zone</td>
+    <td>Date de la commande</td>
+    <td>client</td>
+    <td class="text-center">Action</td>
+  </tr>
+  <tr *ngFor="let commande of commandes" >
+    <td> {{commande?.id}} </td>
+    <td> {{commande?.etat}} </td>
+    <td> {{commande?.zone.prixLivraison }} </td>
+    <td> {{commande?.zone.nom}} </td>
+    <td> {{commande?.addedAt |date : "dd/MM/y"}} </td>
+    <td> {{ commande?.user?.prenom }} {{ commande?.user?.nom }} </td>
+    <td>
+      <a href="commande/{{ commande.id }}" class="btn btn-info mx-2">detail</a>
+      <button class="btn ">
+        <input type="checkbox" class="form-check" style="width: 20px;height: 20px; cursor: pointer">
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>

@@ -1,0 +1,95 @@
+<h3 class="text-center">filtrer</h3>
+<input type="text" class="form-control"
+       placeholder="simplifer vous par recher"
+       [(ngModel)]="zonetoSearch">
+<h2 class="p-3 text-center"> selectioner les commandes à livrer </h2>
+<div class="d-flex" style="justify-content: space-around">
+<select class="mb-4 form-select" #zone (click)="affectEtat(zone)">
+  <option></option>
+  <option class="bg-info" disabled>
+    -----------------------------------------------------------------------------
+    NOM ZONE
+    -----------------------------------------------------------------------------
+    PRIX LIVRAISON
+  </option>
+  <option *ngFor="let zone of zones" value="{{zone.nom}}" (click)="searchZone(zone)">
+    -----------------------------------------------------------------------------
+    {{ zone.nom }}
+    -----------------------------------------------------------------------------
+    {{ zone.prixLivraison}}
+  </option>
+</select>
+  <div style="margin:0 2% 0 2%;">
+    <select class="form-select form-select-lg mb-3 " name="produit" #etat (click)="affectEtat(etat)">
+      <option></option>
+      <option disabled>Rechrcher par etat</option>
+      <option value="valider">valider</option>
+      <option value="annuler">annuler</option>
+      <option value="livre">livre</option>
+    </select>
+  </div>
+
+  <div>
+    <input type="date" placeholder="date" [(ngModel)]="zonetoSearch">
+  </div>
+</div>
+
+<table class="table tablet-landscape">
+  <tbody>
+  <tr class="bg-info ">
+    <td>numero commande</td>
+    <td>Etat commade</td>
+    <td>Prix commande (FCFA) </td>
+    <td>Zone</td>
+    <td>Date de la commande</td>
+    <td>client</td>
+    <td class="text-center">Action</td>
+  </tr>
+  <tr *ngFor="let commande of commandes |filter:zonetoSearch " (change)="recupCommande($event)">
+    <ng-template [ngIf]="commande.etat==='valider' ">
+            <td> {{commande?.id}} </td>
+            <td> {{commande?.etat}} </td>
+            <td> {{commande?.zone.prixLivraison }} </td>
+            <td> {{commande?.zone.nom}} </td>
+            <td> {{commande?.addedAt |date : "dd/MM/y hh:mm"}} </td>
+            <td> {{ commande?.user?.prenom }} {{ commande?.user?.nom }} </td>
+            <td *ngIf="commande.etat!='annuler' else sansCheck">
+              <a href="commande/{{ commande.id }}" class="btn btn-info mx-2">detail</a>
+              <button class="btn ">
+                <input type="checkbox" class="form-check" style="width: 20px;height: 20px; cursor: pointer" id="{{commande.id}}">
+              </button>
+            </td>
+        <ng-template #sansCheck>
+          <td>
+            <a href="commande/{{ commande.id }}" class="btn btn-info mx-2">detail</a>
+          </td>
+        </ng-template>
+    </ng-template>
+  </tr>
+  </tbody>
+</table>
+
+<h1 class="text-center">liste des livreurs disponible</h1>
+<table class="table tablet-landscape">
+  <tbody>
+  <tr class="bg-danger">
+    <td>matricule</td>
+    <td>nom</td>
+    <td>numero</td>
+    <td>disponibilité</td>
+    <td>choisir un livreur</td>
+  </tr>
+    <tr *ngFor="let livreur of liveurs " (change)="recupLivreur($event)">
+      <ng-template [ngIf]="livreur.etat=='disponible'">
+        <td>{{livreur?.matriculeMoto}}</td>
+        <td>{{livreur?.prenom}} {{livreur?.nom}}</td>
+        <td>{{livreur?.telephone}}</td>
+        <td>{{livreur?.etat}}</td>
+        <button class="btn">
+          <td class="text-center" ><input type="radio" name="livreu" id="{{livreur.id}}" class="w-20 h-20"></td>
+        </button>
+      </ng-template>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-success p-3 w-100" (click)="validerCommande()">valider</button>

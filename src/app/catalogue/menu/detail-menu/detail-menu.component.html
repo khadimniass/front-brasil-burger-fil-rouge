@@ -1,0 +1,80 @@
+ <header class="h-20 mt-1 bg-light">-</header>
+<main class="detail-menu">
+  <div class="  mt-3">
+    <div class="d-flex justify-content-center item-show ">
+      <div class="item-burger part2">
+        <h4 class="text-center">detaille : <i>{{menu.nom}}</i></h4>
+        <div class="div-image-detail-menu">
+          <img [src]=" afficherImage((menu.image))" alt="{{ menu?.description }}">
+        </div>
+        <div class="footer-picture footer-picture-menu">
+          <p class="card-tittle fs-1 text-center">{{ menu.prix }} FCFA </p>
+          <p class="h6 text-center">{{menu.description}}</p>
+        </div>
+        <div class="bg-light">
+        <div class="border card">
+          <h1 class="bg-dark rounded-circle text-center white">
+            <span style="color: white">{{ boissonInMenu?.menuTailles[0].qteBoissondanMenu }} </span>
+          </h1>
+        </div>
+          <div>
+            <h3>veillez choisir <i style="color: red"> {{ boissonInMenu?.menuTailles[0].qteBoissondanMenu }} </i> boissons </h3>
+            <br>
+            dans les tailles <i style="color: red"> {{ boissonInMenu.nom }} </i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="component-menu">
+    <div class="cont-menu">
+
+        <div class="component-up">
+          <!-- BURGER AND FRITE -->
+          <div *ngFor="let burger of menu.burgers" class="burger" style="margin-left: 20%">
+            <div class="div-image-detail-burger">
+              <img [src]=" afficherImage(burger.burger.image)" alt="burger">
+              <h6 class="mt-2 h5"> quantite de burger  <i style="color: red">{{ burger.quantiteBurger }}</i></h6>
+            </div>
+          </div>
+          <div style="width: 2px; border: 2px solid"></div>
+          <div *ngFor="let frite of menu.frites" class="frite" style="margin-left: 15%">
+            <div class="div-image-detail-burger">
+              <img [src]=" afficherImage(frite.frite.image)" alt="frite">
+              <h6 class="mt-2 h5"> quantite de frite <i style="color: red">{{ frite.quantitefrite }}</i> </h6>
+            </div>
+          </div>
+        </div>
+
+        <div class="component-down">
+          <div *ngFor="let tailleboisson of boissonInMenu.tailleBoissons" class="cnt-boisson">
+            <div class="div-image-detail-menu-boisson">
+              <img [src]=" afficherImage((tailleboisson.boisson.image))">
+            </div>
+            <div class="col-md-3 col-lg-3 col-xl-2 d-flex w-50 buttton-up-down">
+              <button class="btn btn-link px-2 {{moins}}"
+                      onclick="this.parentNode.querySelector('input[type=number]').stepDown()" (click)="decrementVal()">
+                <i class="fas fa-minus"></i>
+              </button>
+              <input min="0" id="form1" name="quantity" value="0" type="number" class="form-control form-control-sm" />
+              <button class="btn btn-link px-2 {{plus}}"
+                      onclick="this.parentNode.querySelector('input[type=number]').stepUp()" (click)="incrementVal()">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</main>
+
+ <div *ngIf="sumVal == boissonInMenu.menuTailles[0].qteBoissondanMenu ">
+    <button  class="btn-commander btn btn-danger"  (click)="ajouterAuPagner(menu)">ajouter au panier</button>
+ </div>
+   <h1 class="text-center">produits simillaires</h1>
+   <div class="produit container">
+     <app-produit *ngFor="let menu of menus" [produit]="menu" class="mx-3"></app-produit>
+   </div>
+
+    <h1 class="text-center mt-5">Choisissez des complément avant de valider la commandes</h1>
+    <app-compliment></app-compliment>

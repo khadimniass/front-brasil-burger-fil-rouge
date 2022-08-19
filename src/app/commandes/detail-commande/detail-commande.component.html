@@ -1,0 +1,21 @@
+<h1> commandé envoyé à {{ commande.addedAt|date :"hh:m" }}</h1>
+<h1>par {{ commande.user.prenom }} {{ commande.user.nom }}</h1>
+<h3>telephone du client : {{commande.user.telephone}}</h3>
+<h3>Zone de livraison  : {{commande.zone.nom }}</h3>
+<h3>Etat commande  : <span class="bg-info"> {{commande.etat }}...</span></h3>
+<h4>nombre de produit commandés : {{commande.Produits.length}} </h4>
+<h1 class="text-center">la liste des produits</h1>
+<table class="table table-hover text-center">
+  <tbody>
+    <tr>
+      <td>quantite</td>
+      <td>nom</td>
+      <td>image</td>
+    </tr>
+  <tr *ngFor="let prod of commande.Produits">
+    <td>{{prod.quantity }}</td>
+    <td>{{prod.produit.nom}}</td>
+    <td class="img-det-cmd"><img [src]="affiche(prod.produit.image)" alt="{{prod.produit.nom}}"></td>
+  </tr>
+  </tbody>
+</table>

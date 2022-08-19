@@ -1,0 +1,76 @@
+<section class="bg-light">
+  <div class="container h-100 py-5 ">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-10">
+        <div class=" text-center mb-4 bg-dark" >
+          <h3 class="fw-normal mb-0 text-light"> prix total : {{ prixTotal |currency: 'XOF' }} </h3>
+        </div>
+        <div style="overflow: scroll; height: 60vh">
+        <div class="card rounded-3 mb-4 " *ngFor="let panier of (item$ | async)">
+          <div class="card-body p-4">
+            <div class="row d-flex justify-content-between align-items-center">
+              <div class="col-md-2 col-lg-2 col-xl-2">
+                <img
+                  [src]="afficherImage(panier.image)"
+                  class="img-fluid rounded-3" alt="{{ panier.nom }}">
+                <p class="text-center mt-2"> {{ panier.prix }} </p>
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-3">
+                <p class="lead fw-normal mb-2"> {{ panier.nom }} </p>
+                <p> {{ panier.description }} </p>
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                <button class="btn btn-link px-2"
+                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                        (click)="calculPrix(panier, q.value); PrixTotal() ">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <input #q (change)="calculPrix(panier, q.value);PrixTotal()" id="form1" min="1" name="quantity" value="{{ panier.quantity }}" type="number" class="form-control form-control-sm"/>
+                <button class="btn btn-link px-2"
+                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                        (click)="calculPrix(panier, q.value); PrixTotal()" >
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                <h5 class="mb-0"> {{ panier.prix * panier.quantity }} FCFA </h5>
+              </div>
+              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                <button class="btn" (click)="delete(panier)">
+                   <i class="fas fa-trash fa-lg text-danger"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+              <div class="card">
+                <div class="card-body">
+                  <div class="w-100 bg-dark {{ propertybtnblock }} btn-livraison">
+                    <button class="bi-shop btn btn-info" (click)="payerSurPlace() ">payer sur place</button>
+                    <button class="bi-cart-check btn btn-info" (click)="livrer() ">livrer</button>
+                  </div>
+                  <!-- Reccupérer sur place -->
+                  <button class="btn btn-dark btn-block w-100 fs-3 {{ propertybtnlivre }}" (click)="recuperersuplace()">VALIDER POUR RECUPERER SUR PLACE</button>
+                </div>
+                <div class="list-zone">
+                  <form method="post" #zoneClique="ngForm">
+                  <select style="cursor: pointer" #zone name="zone" class="w-100 text-center form-control bg-info {{showzone}}" (click)="recupIdZone(zone) ;   showbutton()">
+                    <option></option>
+                    <option disabled selected> choisir votre zone </option>
+                    <option class="space-zone" *ngFor="let zone of zones" value="{{ zone.id }}">
+                          <span class="nom-zone"> {{ zone.nom }} </span>
+                          <span>****************************------------------------------------------****************************</span>
+                          <span class="prix-zone"> PRIX :  {{zone.prixLivraison}} </span>
+                    </option>
+                  </select>
+                  </form>
+                  <!-- Reccupérer par livraison -->
+                  <button class="btn btn-dark btn-block w-100 fs-3 {{btnvalideCommande}}" (click)="recuperersuplivraison()">VALIDER LA COMMANDE</button>
+                </div>
+              </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-compliment></app-compliment>

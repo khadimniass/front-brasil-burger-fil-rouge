@@ -1,0 +1,60 @@
+.div-image-detail-menu{
+  height: 200px;
+  width: 350px;
+}
+.div-image-detail-menu img{
+  height: 100%;
+  width: 100%;
+}
+.div-image-detail-menu-boisson{
+  height: 150px;
+  width: 150px;
+  margin: 20%;
+}
+
+.div-image-detail-menu-boisson img{
+  height: 100%;
+  width: 100%;
+}
+.component-menu{
+  width: 100%;
+  border: solid;
+  overflow-x: auto;
+}
+.boisson-in-menu{
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+}
+.component-up{
+  border: 1px solid red;
+  height: 30vh;
+  display: flex;
+}
+.component-down{
+  border: 1px solid blue;
+  flex: 1;
+  display: flex;
+}
+.cont-menu{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cnt-boisson{
+  display: flex;
+  flex-direction: column;
+  border: solid;
+}
+.buttton-up-down{
+  margin-left: 20%;
+}
+.div-image-detail-burger{
+  width: 200px;
+  height: 200px;
+}
+.div-image-detail-burger img{
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,17 @@
+.btn-livraison{
+  display: flex;
+  justify-content: space-between;
+}
+.btn-livraison button{
+  padding: 10px;
+}
+.nom-zone{
+
+}
+.prix-zone{
+
+}
+.space-zone{
+  display: flex;
+  justify-content: space-between;
+}

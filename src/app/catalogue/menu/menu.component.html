@@ -1,0 +1,20 @@
+<div class="item-item-burger">
+  <div class="contain-item-menu" (click)="details()">
+    <div class="item-burger">
+      <div class="div-image">
+        <img [src]="affichageImage(menus.image)" alt="{{ menus.description }}">
+      </div>
+      <div class="">
+        <p class="card-tittle">{{ menus.prix }} FCFA</p>
+        <p class="card-tittle">{{ menus.nom }}</p>
+        <div class="star mb-2">
+          <i class="bi-star"></i>
+          <i class="bi-star"></i>
+          <i class="bi-star"></i>
+          <i class="bi-star-fill"></i>
+          <i class="bi-star-fill"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

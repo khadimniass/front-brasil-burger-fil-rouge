@@ -1,0 +1,25 @@
+<h1 class="text-center">liste des livreurs en livraison</h1>
+<table class="table tablet-landscape">
+  <tbody>
+  <tr class="bg-info text-center fs-1">
+    <td class="">matricule</td>
+    <td class="">nom</td>
+    <td class="">numero</td>
+    <td class="">disponibilité</td>
+    <td class="">action</td>
+  </tr>
+  <tr *ngFor="let livreur of liveurs " class="text-center">
+    <ng-template [ngIf]="livreur.etat=='indisponible'">
+      <td>{{livreur?.matriculeMoto}}</td>
+      <td>{{livreur?.prenom}} {{livreur?.nom}}</td>
+      <td>{{livreur?.telephone}}</td>
+      <td>{{livreur?.etat}}</td>
+      <td class="text-center">
+        <a href="admin/livraisons/livreur/{{ livreur.id }}" class="btn btn-info m-2 p-2">
+          detail livraison
+        </a>
+      </td>
+    </ng-template>
+  </tr>
+  </tbody>
+</table>

@@ -68,6 +68,13 @@ export class BackService {
   getLivreur(){
     return this.http.get<any>(this.urlLivreurs)
   }
+  getLivreurById(id:number){
+    return this.http.get<any>(this.urlLivreurs+"/"+id);
+  }
+
+  getLivraisonById(idLivraison:number){
+    return this.http.get<any>(this.urlLivraison+"/"+idLivraison);
+  }
 setLivraison(commandes:any[], idLivreur:number){
   this.http.post<any>(this.urlLivraison,
     {

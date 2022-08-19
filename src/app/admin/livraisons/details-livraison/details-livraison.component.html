@@ -1,0 +1,31 @@
+<h1 class="text-center">La liste des commandes livrées par <i> {{fullname}}</i> </h1>
+<table class="table table-hover">
+  <tbody>
+  <tr class="bg-info text-center">
+    <td>numero commande</td>
+    <td>Etat commade</td>
+    <td>Zone</td>
+    <td>Date de la commande</td>
+    <td>Action</td>
+  </tr>
+  <tr *ngFor="let commande of commandes" class="text-center">
+    <ng-template >
+
+    </ng-template>
+    <td>  {{commande?.id}}</td>
+    <td> {{commande?.etat}}</td>
+    <td> {{commande?.zone.nom}}</td>
+    <td>   {{commande?.addedAt|date:"dd/MM/y"}}</td>
+    <td *ngIf="commande.etat=='livre' else livre">
+      <button class="btn btn-success m-2" (click)="terminerComande(commande.id)">terminer</button>
+      <button class="btn btn-danger m-2" (click)="annulerComande(commande.id)">annuler</button>
+    </td>
+    <ng-template #livre>
+      <td>
+        <button disabled class="btn btn-success m-2" (click)="terminerComande(commande.id)">terminer</button>
+        <button disabled class="btn btn-danger m-2" (click)="annulerComande(commande.id)">annuler</button>
+      </td>
+    </ng-template>
+  </tr>
+  </tbody>
+</table>

@@ -1,0 +1,14 @@
+<h1 class="text-center">liste des compliments</h1>
+<div class="card mt-5">
+  <div class="search-hero">
+  </div>
+  <p class="h4 text-center">list des frites</p>
+  <div class="produit container">
+    <app-item-complement *ngFor="let frite of frites" [produit]="frite"></app-item-complement>
+  </div>
+
+  <p class="h4 text-center">list des boissons</p>
+  <div class="produit container">
+    <app-item-complement *ngFor="let boisson of boissons" [produit]="boisson" ></app-item-complement>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+
+<h1 class="text-center">Bonjour <i> {{detailClient.prenom }} {{detailClient.nom}}</i> </h1>
+<p class="text-center">filtrer vos commandes</p>
+<div class="d-flex" style="justify-content: space-between">
+<div class="">
+  <select class="form-select form-select-lg mb-3 " name="produit" #etat (click)="affectEtat(etat)">
+    <option selected disabled>selectionner le produit à insérer</option>
+    <option value="valider">valider</option>
+    <option value="annuler">annuler</option>
+    <option value="livre">livre</option>
+  </select>
+</div>
+  <input type="text" [(ngModel)]="shearincommande" placeholder="personnaliser votre recherche">
+
+</div>
+<div style="height: 55vh; overflow:auto">
+<table class="table table-hover">
+  <tbody>
+  <tr class="bg-info">
+    <td>numero commande</td>
+    <td>Etat commade</td>
+    <td>Prix livraison (FCFA) </td>
+    <td>Zone</td>
+    <td>Date de la commande</td>
+    <td>Action</td>
+  </tr>
+  <tr *ngFor="let commande of detailClient.commandes | filter : shearincommande" >
+    <td> {{commande?.id}}</td>
+    <td> {{commande?.etat}}</td>
+    <td> {{commande?.zone.prixLivraison }}</td>
+    <td> {{commande?.zone.nom}}</td>
+    <td> {{commande?.addedAt |date :  "dd.MM.y"  }} </td>
+    <td *ngIf="commande.etat=='en cours' else autre">
+      <a href="commande/{{ commande.id }}" class="btn btn-info mx-2">detail</a>
+      <button class="btn btn-danger mx-2" (click)="annulerComande(commande.id)">annuler</button>
+    </td>
+    <ng-template #autre>
+      <td>
+      <a href="commande/{{ commande.id }}" class="btn btn-info mx-2">detail</a>
+      <button disabled class="btn btn-danger mx-2" (click)="annulerComande(commande.id)">annuler</button>
+      </td>
+    </ng-template>
+  </tr>
+  </tbody>
+</table>
+</div>
+  <i>commande client</i>

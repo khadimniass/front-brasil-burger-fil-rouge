@@ -22,23 +22,26 @@ export class DetailProduitComponent implements OnInit {
               private service:ServiceService,
               private servicebd:BackService,
               private servicePanier:ServicePanierService
-  ) { }
-
+  ){}
   ngOnInit(): void {
-    const idProduit = +this.activeRoute.snapshot.params['id'];
+    const idProduit = + this.activeRoute.snapshot.params['id'];
     //this.produit=this.serviceCat.getBurgeryId(idProduit); // donne du tableau
         this.servicebd.getProduitById(idProduit).subscribe(data=>{
         this.produit=data;
-      }
-    );
+      });
+
+
     this.servicebd.getCatalogueObs().subscribe(catalogue => {
       this.burgers=catalogue.burgers
     });
   }
+
   afficherImage(img:string){
     return this.service.demanderAffichageImage(img);
   }
+
   ajouterAuPagner(element:Produit) {
     this.servicePanier.ajouter(element);
   }
+
 }
