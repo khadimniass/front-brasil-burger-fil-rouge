@@ -20,6 +20,7 @@ export class CommandesComponent implements OnInit {
 
   ngOnInit(): void {
     this.serviceback.getCommande().subscribe(com=>{
+      console.log(com[0])
 //      this.commandes=com
       com.forEach((comande:any)=>{
         if (comande.etat=="valider"){

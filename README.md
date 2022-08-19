@@ -1,7 +1,10 @@
 ![home image](home_brasil_burger.png)
 # ProjectFilRougeFront
+# Front
+## le la vue de cette appli est en symfony disponible via le lien suivant :
+[github](https://github.com/khadimniass/front-brasil-burger-fil-rouge).
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.6.
+    https://github.com/khadimniass/front-brasil-burger-fil-rouge
 
 ## Development server
 
