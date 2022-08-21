@@ -17,7 +17,7 @@ detailClient!:any
   ngOnInit(): void {
     this.serviceback.getCommandeUser(4).subscribe(user=>{
       this.detailClient = user
-      console.log(user)
+     // console.log(user.commandes)
     })
   }
   annulerComande(id:number){

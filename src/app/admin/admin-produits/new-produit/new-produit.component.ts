@@ -11,7 +11,6 @@ import {Router} from "@angular/router";
 })
 export class NewProduitComponent implements OnInit {
   url:string ="http://127.0.0.1:8000/api/";
-  imageSrc: string="";
   typeProduit:string = "";
 
   myForm = new FormGroup({
@@ -60,7 +59,6 @@ export class NewProduitComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.typeProduit)
     if (this.typeProduit=='' || this.typeProduit=='selectionner le produit à insérer'){
       Swal.fire({
         html:'veillez choisir le type de produit à insérer',

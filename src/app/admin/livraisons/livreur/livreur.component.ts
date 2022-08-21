@@ -20,15 +20,12 @@ export class LivreurComponent implements OnInit {
     this.serviceback.getLivreurById(this.idLivreur).subscribe(livreur=>{
       this.livreur=livreur
       this.toutesLeslivraison = livreur.livraisons
-    //  console.log(this.toutesLeslivraison)
+      console.log(this.toutesLeslivraison)
       this.toutesLeslivraison.forEach((livraison:any)=>{
-        //  console.log("nombre de commande à livrées",livraison.commandes.length)
         livraison.commandes.forEach((commandeDansLivraison:any)=>{
           this.commandes.push(commandeDansLivraison)
-        //  console.log("COMMANDES DANS LIVRAISON",commandeDansLivraison)
         })
       })
     })
-    console.log(this.commandes)
   }
 }

@@ -49,7 +49,7 @@
   </tr>
   <tr *ngFor="let livraison of toutesLeslivraison" class="text-center">
     <ng-template [ngIf]="livraison.commandes.length!=0">
-    <td>{{livraison.id}}</td>
+    <td>{{livraison.numeroCommande}}</td>
     <td>{{livraison.date |date :"dd/MM/yyyy hh:mm"}}</td>
     <td>
       <a href="admin/livraisons/{{livraison.id}}" class="btn btn-info m-2">detail</a>

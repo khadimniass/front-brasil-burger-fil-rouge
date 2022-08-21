@@ -5,7 +5,9 @@ import { RegisterComponent } from './register/register.component';
 import {RouterModule} from "@angular/router";
 import { AuthComponent } from './auth.component';
 import { AlertComponent } from './alert/alert.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { ResetWordComponent } from './reset-word/reset-word.component';
+import {HttpClientModule} from "@angular/common/http";
 
 export const routes = [
   {path:'', component:AuthComponent},
@@ -25,15 +27,20 @@ export const routes = [
     RegisterComponent,
     AuthComponent,
     AlertComponent,
+    ResetWordComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule
   ],
   exports: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AuthComponent,
+    AlertComponent,
   ]
 })
 export class AuthModule { }

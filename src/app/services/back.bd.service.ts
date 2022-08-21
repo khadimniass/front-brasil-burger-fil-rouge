@@ -46,7 +46,9 @@ export class BackService {
   }
 
   updateCommande(id:number, body:any,message:string){
-    this.http.put(this.urlCommandes+"/"+id, body).subscribe();
+    this.http.put(this.urlCommandes+"/"+id, body).subscribe(
+
+    );
     Swal.fire({
       html: message,
       icon:'info',
@@ -55,8 +57,22 @@ export class BackService {
       title:'brasil burger'
     });
   }
+  updateCommandeandview(commande:any, etat:string,message:string){
+    this.http.put(this.urlCommandes+"/"+commande.id, {"etat":etat}).
+    subscribe((Nouvellecommande:any)=>{
+        commande.etat= Nouvellecommande.etat
+    });
+    Swal.fire({
+      html: message,
+      icon:'info',
+      timer:3500,
+      footer:'copyright@',
+      title:'brasil burger'
+    });
+  }
+
+
   updateEtatLivreur(idLivreur:number,body:any){
-    console.log(idLivreur)
     this.http.put(this.urlLivreurs+"/"+idLivreur,body).subscribe();
   }
   getCommandeById(id:number):Observable<any>{

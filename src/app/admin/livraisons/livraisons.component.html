@@ -47,7 +47,7 @@
   </tr>
   <tr *ngFor="let commande of commandes |filter:zonetoSearch " (change)="recupCommande($event)">
     <ng-template [ngIf]="commande.etat==='valider' ">
-            <td> {{commande?.id}} </td>
+            <td> {{commande?.numeroCommande}} </td>
             <td> {{commande?.etat}} </td>
             <td> {{commande?.zone.prixLivraison }} </td>
             <td> {{commande?.zone.nom}} </td>

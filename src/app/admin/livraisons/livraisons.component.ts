@@ -50,7 +50,7 @@ export class LivraisonsComponent implements OnInit {
   recupCommande($event:any){
     let lineCommande:string = "api/commandes/"+(+$event.target.id);
     let isCommand=this.commandeToPush.find(com=>{ // est-ce la commande est dans le tableau ?
-      return com == lineCommande
+      return com === lineCommande  //bolean
     })
       if($event.target.checked){
         if (!isCommand){
