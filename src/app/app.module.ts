@@ -23,6 +23,7 @@ import { PageNoteFoundComponent } from './page-note-found/page-note-found.compon
 import { CommandesClientComponent } from './commandes/commandes-client/commandes-client.component';
 import { DetailCommandeClientComponent } from './commandes/commandes-client/detail-commande-client/detail-commande-client.component';
 import {AdminModule} from "./admin/admin.module";
+import {QRCodeModule} from 'angularx-qrcode';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import {AdminModule} from "./admin/admin.module";
     FormsModule,
     Ng2SearchPipeModule,
     AdminModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    QRCodeModule
   ],
   providers: [],
   exports: [

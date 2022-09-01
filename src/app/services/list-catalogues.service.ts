@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Catalogue, Produit} from "../models/models.type.variable";
 import {from, Observable} from "rxjs";
-
 @Injectable({
   providedIn: 'root'
 })

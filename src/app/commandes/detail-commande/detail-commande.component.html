@@ -1,9 +1,21 @@
-<h1> commandé envoyé à {{ commande.addedAt|date :"hh:m" }}</h1>
-<h1>par {{ commande.user.prenom }} {{ commande.user.nom }}</h1>
-<h3>telephone du client : {{commande.user.telephone}}</h3>
-<h3>Zone de livraison  : {{commande.zone.nom }}</h3>
-<h3>Etat commande  : <span class="bg-info"> {{commande.etat }}...</span></h3>
-<h4>nombre de produit commandés : {{commande.Produits.length}} </h4>
+<div class="d-flex  justify-content-between ">
+<div>
+  <h1> commandé envoyé à {{ commande.addedAt|date :"hh:m" }}</h1>
+  <h1>par {{ commande.user.prenom }} {{ commande.user.nom }}</h1>
+  <h3>telephone du client : {{commande.user.telephone}}</h3>
+  <h3>Zone de livraison  : {{commande.zone.nom }}</h3>
+  <h3>Etat commande  : <span class="bg-info"> {{commande.etat }}...</span></h3>
+  <h4>nombre de produit commandés : {{commande.Produits.length}} </h4>
+</div>
+<div>
+  <qrcode qrdata="{{commande?.code}}"
+  level="'M'"
+  size="256"
+>
+</qrcode>
+<h1> {{commande?.code}} </h1>
+</div>
+</div>
 <h1 class="text-center">la liste des produits</h1>
 <table class="table table-hover text-center">
   <tbody>

@@ -29,8 +29,6 @@ export class DetailProduitComponent implements OnInit {
         this.servicebd.getProduitById(idProduit).subscribe(data=>{
         this.produit=data;
       });
-
-
     this.servicebd.getCatalogueObs().subscribe(catalogue => {
       this.burgers=catalogue.burgers
     });
